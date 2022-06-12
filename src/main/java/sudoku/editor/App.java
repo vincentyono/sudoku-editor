@@ -1,12 +1,14 @@
 package sudoku.editor;
 
+import sudoku.editor.view.*;
+
 /**
- * Hello world!
+ * Sudoku Editor
  *
  */
 
 public class App {
   public static void main(String[] args) {
-    System.out.println("Hello World!");
+    new MainFrame();
   }
 }

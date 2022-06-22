@@ -63,6 +63,7 @@ public class CellPanel extends JPanel implements MouseListener {
   public void deselected() {
     this.setBackground(null);
     this._cellValuePanel.setBackground(null);
+    this._cellPencilNotesPanel.removeLabelBackground();
   }
 
   public void insertNumber(int number) {
@@ -83,6 +84,13 @@ public class CellPanel extends JPanel implements MouseListener {
       this._cellPencilNotesPanel.setVisible(true);
       this._cellPencilNotesPanel.toggleNumberVisibility(number);
     }
+  }
+
+  public int getNumber() {
+    if (this._cellValueLabel.getText() == "") {
+      return 0;
+    }
+    return Integer.parseInt(this._cellValueLabel.getText());
   }
 
   @Override

@@ -52,5 +52,6 @@ public class CellPencilNotesPanel extends JPanel {
     for (int i = 0; i < this._pencilNotes.length; i++) {
       this._pencilNotes[i].setBackground(null);
     }
+    this.setBackground(null);
   }
 }

@@ -56,9 +56,44 @@ public class GridPanel extends JPanel {
   }
 
   public void insertNumber(int number) {
-    this._cellPanels[this.selectedY()][this.selectedX()].insertNumber(number);
-  }
+    boolean isValid = true;
+    int x = -1, y = -1;
 
+    for (int i = 0; i < this.NUMBER_OF_COLUMNS; i++) {
+      if (this._cellPanels[i][this.selectedX()].getNumber() == number) { // check columns
+        isValid = false;
+      }
+      if (this._cellPanels[this.selectedY()][i].getNumber() == number) { // check rows
+        isValid = false;
+      }
+    }
+
+    if (this.selectedX() <= 2 && this.selectedX() >= 0)
+      x = 0;
+    if (this.selectedX() <= 5 && this.selectedX() >= 3)
+      x = 3;
+    if (this.selectedX() <= 8 && this.selectedX() >= 6)
+      x = 6;
+
+    if (this.selectedY() <= 2 && this.selectedY() >= 0)
+      y = 0;
+    if (this.selectedY() <= 5 && this.selectedY() >= 3)
+      y = 3;
+    if (this.selectedY() <= 8 && this.selectedY() >= 6)
+      y = 6;
+
+    for (int i = x; i < x + 3; i++) {
+      for (int j = y; j < y + 3; j++) {
+        if (this._cellPanels[j][i].getNumber() == number) {
+          isValid = false;
+        }
+      }
+    }
+
+    if (isValid) {
+      this._cellPanels[this.selectedY()][this.selectedX()].insertNumber(number);
+    }
+  }
   public void deselectCell() {
     for (int y = 0; y < this.NUMBER_OF_COLUMNS; y++) {
       for (int x = 0; x < this.NUMBER_OF_ROWS; x++) {
